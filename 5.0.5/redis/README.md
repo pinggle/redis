@@ -6,7 +6,7 @@
 ### export ALL_PROXY=socks5://127.0.0.1:1086
 brew install cmake
 
-### 参考:https://www.jianshu.com/p/904b44911ab9s
+### 参考:https://www.jianshu.com/p/904b44911ab9
 $ git clone https://github.com/redis/redis.git
 $ git checkout 5.0.5
 
