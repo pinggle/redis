@@ -1,3 +1,47 @@
+
+
+```shell
+
+### 命令行使用全局代理
+### export ALL_PROXY=socks5://127.0.0.1:1086
+brew install cmake
+
+### 参考:https://www.jianshu.com/p/904b44911ab9s
+$ git clone https://github.com/redis/redis.git
+$ git checkout 5.0.5
+
+### 添加cmake配置文件;
+redis/CMakeLists.txt
+redis/deps/CMakeLists.txt
+redis/deps/hiredis/CMakeLists.txt
+redis/deps/linenoise/CMakeLists.txt
+redis/deps/lua/CMakeLists.txt
+redis/src/modules/CMakeLists.txt
+
+### 编辑文件,在头部添加头文件;
+$ vim src/ae_kqueue.c
+---------------------------
+#include "ae.h"
+#include "zmalloc.h"
+---------------------------
+
+### 编译
+$ cmake .
+$ make
+$ sh src/mkreleasehdr.sh
+$ sh src/mkreleasehdr.sh
+$ cp release.h src
+$ make
+
+### 打开Clion，选择new CMake project from Sources...，找到Redis目录，打开即可，CLion的run configurations, 导入后,一定要看看是否有文件改变,如果改变了,revert回来即可,按照github上的代码为准
+```
+
+
+
+----
+
+
+
 This README is just a fast *quick start* document. You can find more detailed documentation at [redis.io](https://redis.io).
 
 What is Redis?
